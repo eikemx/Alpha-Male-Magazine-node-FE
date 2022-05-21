@@ -1,26 +1,21 @@
 import { useEffect, useState } from "react";
 import client from "./contentful/client";
-import "./index.css"
-
+import "./index.css";
 import Header from "./components/Header";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 
 const App = () => {
+  useEffect(() => {
+    client.getEntries().then((data) => console.log(data));
+  }, []);
 
-useEffect(() => {
-  client
-  .getEntries()
-  .then((data) => console.log(data))
-},[]);
-  
   return (
     <>
-    <Header/>
-    <h1>contentful blog</h1>
-    
-    <Footer/>
+      <Header />
+      <Hero/>
     </>
   );
-}
+};
 
 export default App;
