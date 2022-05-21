@@ -1,3 +1,11 @@
 body {
 background-color: #cae9ff;
 }
+
+.about {
+    margin-top: 2rem;
+}
+
+.article {
+    margin: 2rem 0rem;
+}
