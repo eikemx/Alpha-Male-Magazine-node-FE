@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import client from "./contentful/client";
-import "./index.css"
-
+import "./index.css";
 import Header from "./components/Header";
+
+
+import Hero from "./components/Hero";
 import Articles from "./components/Articles";
 import Footer from "./components/Footer";
 import About from "./components/About";
 
 const App = () => {
+  useEffect(() => {
+    client.getEntries().then((data) => console.log(data));
+  }, []);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -45,6 +50,7 @@ if (isLoading) {
   return (
     <>
     <Header/>
+    <Hero/>
     <About/>
     <Articles articles={articles.items}/>
     {/* <Tags articles={articles}/> */}
@@ -52,6 +58,6 @@ if (isLoading) {
     <Footer/>
     </>
   );
-}
+};
 
 export default App;
