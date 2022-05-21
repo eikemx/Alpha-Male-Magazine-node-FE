@@ -1,6 +1,11 @@
 const Header = () => {
     return (
-        <div>I will be a strong header!</div>
+        <div>
+            <p>placeholder for logo</p>
+            <header>
+                Alpha Male Magazine
+            </header>
+        </div>
     )
 };
 

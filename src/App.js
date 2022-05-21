@@ -1,23 +1,54 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import client from "./contentful/client";
 import "./index.css"
 
 import Header from "./components/Header";
-import Footer from "./components/Footer"
+import Articles from "./components/Articles";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 const App = () => {
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [articles, setArticles] = useState()
+
 useEffect(() => {
+
+  setIsLoading(true);
   client
-  .getEntries()
-  .then((data) => console.log(data))
+  .getEntries({
+    content_type: "product" // content type is actually article 
+  })
+    .then((data) => {
+      setArticles(data);
+      setIsLoading(false);
+    })
+    .catch((e) => {
+      console.log(e)
+      setIsLoading(false);
+      setIsError(true);
+    });
 },[]);
-  
+
+if (isError) {
+  // console.log(isError)
+  return <h1>Something's wrong!</h1>
+}
+
+if (isLoading) {
+  return <p>Loading...</p>
+}
+
+// console.log(articles)
+
   return (
     <>
     <Header/>
-    <h1>contentful blog</h1>
-    
+    <About/>
+    <Articles articles={articles.items}/>
+    {/* <Tags articles={articles}/> */}
+    {/* <Author /> */}
     <Footer/>
     </>
   );
