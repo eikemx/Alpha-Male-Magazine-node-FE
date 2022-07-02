@@ -4,7 +4,7 @@ import { Container } from "@chakra-ui/layout";
 import { Link } from "react-router-dom"
 
 const Tags = ({tags}) => {
-    console.log(tags)
+    // console.log(tags)
 
     return (
         <>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Outlet, Link, useLocation } from "react-router-dom";
 import client from "./contentful/client";
+import serverURL from "./serverURL";
 import "./index.css";
 import "./App.css"
 
@@ -41,40 +42,50 @@ useEffect(() => {
 
 useEffect(() => {
   setIsLoading(true);
-  const articles = client
-  .getEntries({
-    content_type: "product", // content type is actually article 
-    'metadata.tags.sys.id[in]': selectedTag
-  })
-
-  const authors = client
-  .getEntries({
-    content_type: "author",
-  })
-
-  const tags = client
-  .getTags()
-
-  Promise
-    .all([articles, authors, tags]).then(([articlesData, authorsData, tagsData]) => {
-      // console.log(articlesData)
-      // console.log(authorsData)
-      // console.log(tagsData)
-      setArticles(articlesData)
-      setAuthors(authorsData)
-      setTags(tagsData)
+  fetch(`${serverURL}/api/alpha/articles`)
+    .then((res) => res.json())
+    .then ((data) => {
+      setArticles(data);
       setIsLoading(false);
-  })
-    .catch((e) => {
-        console.log(e)
-        setIsLoading(false);
-        setIsError(true);
-      });
-}, [selectedTag])
+    });
+}, []);
 
-if (isError) {
-  return <h1>Something's wrong!</h1>
-}
+// useEffect(() => {
+//   setIsLoading(true);
+//   const articles = client
+//   .getEntries({
+//     content_type: "product", // content type is actually article 
+//     'metadata.tags.sys.id[in]': selectedTag
+//   })
+
+//   const authors = client
+//   .getEntries({
+//     content_type: "author",
+//   })
+
+//   const tags = client
+//   .getTags()
+
+//   Promise
+//     .all([articles, authors, tags]).then(([articlesData, authorsData, tagsData]) => {
+//       // console.log(articlesData)
+//       // console.log(authorsData)
+//       // console.log(tagsData)
+//       setArticles(articlesData)
+//       setAuthors(authorsData)
+//       setTags(tagsData)
+//       setIsLoading(false);
+//   })
+//     .catch((e) => {
+//         console.log(e)
+//         setIsLoading(false);
+//         setIsError(true);
+//       });
+// }, [selectedTag])
+
+// if (isError) {
+//   return <h1>Something's wrong!</h1>
+// }
 
 if (isLoading) {
   return <p>Loading...</p>
@@ -91,8 +102,8 @@ if (isLoading) {
             element={
               <>
                 <About/>
-                <Tags tags={tags}/>
-                <Articles articles={articles.items}/>
+                {/* <Tags tags={tags}/> */}
+                <Articles articles={articles}/>
                 <Link to={`/articles`} className='article-link'>See all articles</Link>
                 <Outlet/>
               </>
@@ -109,8 +120,8 @@ if (isLoading) {
           path='/articles'
           element={
             <>
-              <Tags tags={tags}/>
-              <AllArticles articles={articles.items} />
+              {/* <Tags tags={tags}/> */}
+              {/* <AllArticles articles={articles.items} /> */}
             </>
           }
         />
@@ -118,27 +129,28 @@ if (isLoading) {
           path='/article/:articleID'
           element={
             <>
-              <Tags tags={tags}/>
-              <Article articles={articles.items}/>
+              {/* <Tags tags={tags}/> */}
+              {/* <Article articles={articles.items}/> */}
             </>
           }
         />
         <Route 
           path='/authors'
           element={
-            <Authors authors={authors.items}/> 
+            <></>
+            // <Authors authors={authors.items}/> 
           }
         />
         <Route 
           path='/author/:authorID'
-          element={<Author authors={authors.items}/>}
+          // element={<Author authors={authors.items}/>}
         />
         <Route 
           path='/topic/:tagId'
           element={
           <>
-            <Tags tags={tags}/>
-            <ArticlesByTags articles={articles} setSelectedTag={setSelectedTag}/>
+            {/* <Tags tags={tags}/> */}
+            {/* <ArticlesByTags articles={articles} setSelectedTag={setSelectedTag}/> */}
           </>
           }
         />

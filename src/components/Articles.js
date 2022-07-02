@@ -2,9 +2,10 @@ import { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { Text, Image, Box } from '@chakra-ui/react';
 import { Container } from "@chakra-ui/layout";
+import serverURL from "../serverURL";
 
 const Articles = ({articles}) => {
-// console.log(articles)
+console.log(articles)
 
 let index = 3
 
@@ -16,7 +17,7 @@ const displayedArticles = articles.slice(0,index)
             {displayedArticles.map((article) => {
                 return (
                     <Fragment
-                        key={article.sys.id}
+                        key={article.id}
                     >
                         <Container 
                             className="article" 
@@ -35,7 +36,13 @@ const displayedArticles = articles.slice(0,index)
                                                                       
                                                 
                                 >
-                                    {article.fields.images.map((image) => {
+                                    <Image 
+                                                borderRadius='lg'
+                                                mb={5}
+                                                src={`${serverURL}/images/${article.image}`} 
+                                                alt={article.title} 
+                                            />
+                                    {/* {article.fields.images.map((image) => {
                                         return (
                                             <Image 
                                                 borderRadius='lg'
@@ -45,20 +52,20 @@ const displayedArticles = articles.slice(0,index)
                                                 key={image.sys.id} 
                                             />
                                         )
-                                    })}
+                                    })} */}
                                 </Box>
                                 <Box>
                                     <Text 
                                         fontSize='xl'
                                         fontWeight='bold'
-                                        >{article.fields.title}</Text>
+                                        >{article.title}</Text>
                                     <Text 
                                         fontSize='md' 
                                         mb={2}
-                                    >{article.fields.summary}
+                                    >{article.summary}
                                     </Text>
                                     <Link 
-                                        to={`/article/${article.sys.id}`}
+                                        to={`/article/${article.id}`}
                                     >Read more...</Link>
                                 </Box>
                         </Container>
