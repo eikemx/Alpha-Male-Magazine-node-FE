@@ -5,7 +5,7 @@ import { Container } from "@chakra-ui/layout";
 import serverURL from "../serverURL";
 
 const AllArticles = ({articles}) => {
-console.log(articles)
+// console.log(articles)
 
     return (
         <>
@@ -35,7 +35,8 @@ console.log(articles)
                                                 alt={article.title} 
                                             />
                                 </Box>
-                                <Box>
+                                <Box
+                                >
                                     <Text 
                                         fontSize='xl'
                                         fontWeight='bold'

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Text, Image } from '@chakra-ui/react';
+import React, { useEffect, useState, Fragment    } from "react";
+import { Text, Image, Box } from '@chakra-ui/react';
 import { Container } from '@chakra-ui/layout';
 import { Link } from 'react-router-dom';
 import serverURL from "../serverURL";
@@ -24,21 +24,42 @@ useEffect(() => {
         <>
             {authors.map((author => {
                 return (
-                    <>
+                    <Fragment
+                        key={author.id}
+                    >
                         <Container 
                             className='author' 
-                            key={author.id}
+                            display='flex'
+                            flexDirection='column'
+                            mb='25px' 
+                            p={2}
+                            backgroundColor='#def1ff'
+                            borderRadius='lg'
                         >
-                                <Text fontSize='xl'>{author.first_name} {author.last_name}</Text>
-                                <Image 
+                                    <Box
+                                        alignSelf='center'
+                                    >
+                                        <Image 
+                                                borderRadius='lg'
+                                                mb={5}
                                                 src={`${serverURL}/images/${author.image}`} 
                                                 alt={author.image} 
                                         />
-                                <Link
-                                    to={`/author/${author.id}`}
-                                    >Read more...</Link>
+                                    </Box>
+                                    <Box
+                                        alignSelf='center'
+                                    >
+                                        <Text 
+                                            fontSize='xl'
+                                        >{author.first_name} {author.last_name}
+                                        </Text>
+                                        <Link
+                                        to={`/author/${author.id}`}
+                                        >Read more...
+                                        </Link>
+                                    </Box>
                         </Container>
-                    </>
+                    </Fragment>
                 )
             }))}
         </>
