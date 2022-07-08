@@ -1,25 +1,39 @@
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Text, Image } from '@chakra-ui/react';
 import { Container } from '@chakra-ui/layout';
+import serverURL from "../serverURL";
 
-const Author = ({authors}) => {
-    // console.log(authors)
+const Author = () => {
+
+    const [targetAuthor, setTargetAuthor] = useState({});
     const {authorID} = useParams();
-    
-    const targetAuthor = authors.find((author) => {
-        return author.sys.id === authorID
-    });
-    // console.log(targetAuthor)
 
-    if (!targetAuthor) {
-        return <Text>This Author has been removed!</Text>
-    }
+useEffect(() => {
+  // setIsLoading(true);
+  const targetAuthor = async () => {
+    const data = await fetch(`${serverURL}/api/alpha/authors/${authorID}`);
+    const json = await data.json();
+    console.log(data, json);
+    setTargetAuthor(json.pop());
+  } 
+  targetAuthor();
+}, [authorID]);
+
+    
+    // const targetAuthor = authors.find((author) => {
+    //     return author.sys.id === authorID
+    // });
+    // // console.log(targetAuthor)
+
+    // if (!targetAuthor) {
+    //     return <Text>This Author has been removed!</Text>
+    // }
 
     return (
         <Container 
             className="targeted-author" 
-            key={targetAuthor.sys.id}
+            key={targetAuthor.id}
             mt='25px'
             mb='25px'
             display='flex'
@@ -30,21 +44,15 @@ const Author = ({authors}) => {
                 fontSize='2xl'
                 fontWeight='bold'
                 mb='10px'
-            >{targetAuthor.fields.authorName}</Text>
-            {targetAuthor.fields.image.map((image) => {
-                return (
-                    <Image 
-                        borderRadius='lg'
-                        src={image.fields.imageFile.fields.file.url}
-                        alt={image.fields.imageFile.fields.description}
-                        key={image.sys.id}
-                    />
-                )
-            })}
+            >{targetAuthor.first_name} {targetAuthor.last_name}</Text>
+                <Image 
+                                                src={`${serverURL}/images/${targetAuthor.image}`} 
+                                                alt={targetAuthor.image} 
+                                        />
             <Text
                 mt='25px'
                 mb='25px'
-            >{documentToReactComponents(targetAuthor.fields.authorBio)}</Text>
+            >{targetAuthor.bio}</Text>
         </Container>
     )
 }

@@ -2,24 +2,37 @@ import { useParams, Link } from "react-router-dom";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Text, Image } from '@chakra-ui/react';
 import { Container } from "@chakra-ui/layout";
+import { useEffect, useState } from "react";
+import serverURL from "../serverURL";
 
-const Article = ({articles}) => {
+const Article = () => {
     const { articleID } = useParams();
 
-    const targetArticle = articles.find((article) => {
-        return article.sys.id === articleID;
-    });
+    const [targetArticle, setTargetArticle] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
-    console.log(targetArticle)
+    useEffect(() => {
+        setIsLoading(true);
+        fetch(`${serverURL}/api/alpha/articles/${articleID}`)
+          .then((res) => res.json())
+          .then ((data) => {
+            setTargetArticle(data);
+            setIsLoading(false);
+          });
+      }, []);
 
-    if (!targetArticle) {
-        return <Text>This article has been removed!</Text>
-    }
+      console.log(targetArticle)
+
+
+      if (isLoading) {
+        return <p>Loading...</p>
+      }
+
 
     return (
         <Container 
             className="targeted-article" 
-            key={targetArticle.sys.id}
+            key={targetArticle.id}
             display='flex'
             flexDirection='column'
             alignItems='center'
@@ -28,35 +41,30 @@ const Article = ({articles}) => {
                     fontSize='2xl'
                     fontWeight='bold'
                     mb='10px'
-                >{targetArticle.fields.title}</Text>
-                {targetArticle.fields.images.map((image) => {
-                                return (
-                                    <Image  
+                >{targetArticle.title}</Text>
+                <Image  
                                         borderRadius='lg'    
-                                        src={image.fields.imageFile.fields.file.url} 
-                                        alt={image.fields.imageDescription} 
-                                        key={image.sys.id} />
-                                )
-                            })}
+                                        src={`${serverURL}/images/${targetArticle.image}`} 
+                                        alt={targetArticle.image}   /> 
                 <Text 
                     fontSize='2xl' 
                     mt='25px'
-                >{targetArticle.fields.subtitle}</Text>
+                >{targetArticle.subtitle}</Text>
                 <Text 
                     mb='25px' 
                     mt='25px' 
-                >{documentToReactComponents(targetArticle.fields.articleText)}</Text>
+                >{targetArticle.text}</Text>
                 <Container 
                     mb={2} 
                     className="articles-author"
                     fontSize='sm'
 
                 >
-                    <Text>Author: {targetArticle.fields.articleAuthor.fields.authorName}</Text>
+                    {/* <Text>Author: {targetArticle.fields.articleAuthor.fields.authorName}</Text>
                         <Link 
                             className='author-link'
                             to={`/author/${targetArticle.fields.articleAuthor.sys.id}`}
-                        >Read about me.</Link>
+                        >Read about me.</Link> */}
                 </Container>
         </Container>
     );

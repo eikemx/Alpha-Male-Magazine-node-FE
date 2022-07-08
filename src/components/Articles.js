@@ -5,7 +5,7 @@ import { Container } from "@chakra-ui/layout";
 import serverURL from "../serverURL";
 
 const Articles = ({articles}) => {
-console.log(articles)
+// console.log(articles)
 
 let index = 3
 
@@ -42,17 +42,6 @@ const displayedArticles = articles.slice(0,index)
                                                 src={`${serverURL}/images/${article.image}`} 
                                                 alt={article.title} 
                                             />
-                                    {/* {article.fields.images.map((image) => {
-                                        return (
-                                            <Image 
-                                                borderRadius='lg'
-                                                mb={5}
-                                                src={image.fields.imageFile.fields.file.url} 
-                                                alt={image.fields.imageDescription} 
-                                                key={image.sys.id} 
-                                            />
-                                        )
-                                    })} */}
                                 </Box>
                                 <Box>
                                     <Text 

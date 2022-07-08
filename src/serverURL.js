@@ -7,5 +7,5 @@ if (NODE_ENV === 'production') {
 } else {
     url = REACT_APP_DEVELOPMENT_URL
 }
-
+console.log(url);
 export default url;
