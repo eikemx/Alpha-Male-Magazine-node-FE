@@ -1,7 +1,12 @@
 # Alpha Male Magazine Frontend - A Platform for Male Spirituality
 
+<img src="./src/img/alpha_male_magazine_screenshot.png" width="600" alt="alpha male magazine">
+
 ## Project Overview
 Alpha Male Magazine is a modern web platform focused on male spirituality and personal development. The project consists of a React-based frontend application that connects to a separate Node.js backend API.
+
+## Live Demo
+The project is deployed and can be viewed at [https://alpha-male-mag.netlify.app/](https://alpha-male-mag.netlify.app/)
 
 ## Features
 - Dynamic article management system
