@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Alpha Male Magazine Frontend - A Platform for Male Spirituality
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+Alpha Male Magazine is a modern web platform focused on male spirituality and personal development. The project consists of a React-based frontend application that connects to a separate Node.js backend API.
 
-## Available Scripts
+## Features
+- Dynamic article management system
+- Author profiles and biographies
+- Light/Dark mode toggle
+- Responsive design for all devices
+- Newsletter subscription functionality
+- Social media integration
+- Modern and clean user interface
 
-In the project directory, you can run:
+## Technologies Used
+### Frontend
+- React.js
+- Chakra UI
+- React Router DOM
+- React Icons
+- Emotion (for styling)
+- JavaScript ES6+
 
-### `npm start`
+### UI/UX
+- Responsive design
+- Custom CSS
+- Chakra UI components
+- Dynamic color modes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js
+- npm
+- Backend API running (see related repositories)
 
-### `npm test`
+### Installation
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/Alpha-Male-Magazine-Frontend.git
+   ```
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+3. Set up environment variables
+   Create a `.env` file with:
+   ```
+   REACT_APP_PRODUCTION_URL=your_production_api_url
+   REACT_APP_DEVELOPMENT_URL=your_development_api_url
+   ```
+4. Start the development server
+   ```bash
+   npm start
+   ```
+   The application will open at [http://localhost:3000](http://localhost:3000)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
+```bash
+alpha-male-magazine-frontend/
+├── src/
+│ ├── img/
+│ ├── components/
+│ │ ├── About.js
+│ │ ├── AllArticles.js
+│ │ ├── Article.js
+│ │ ├── Authors.js
+│ │ ├── Footer.js
+│ │ ├── Header.js
+│ │ └── Hero.js
+│ ├── App.js
+│ ├── serverURL.js
+│ └── index.js
+├── public/
+└── README.md
+```
 
-### `npm run build`
+## Related Repositories
+- Backend API: [Alpha-Male-Magazine-node-BE](https://github.com/eikemx/Alpha-Male-Magazine-node-BE)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scripts
+- `npm start`: Runs the development server
+- `npm build`: Builds the production application
+- `npm test`: Runs the test suite
+- `npm eject`: Ejects from Create React App
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features in Detail
+1. **Article Management**
+   - Display of featured articles
+   - Full article view
+   - Article summaries and previews
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Author Profiles**
+   - Author biographies
+   - Author image galleries
+   - Associated articles
 
-### `npm run eject`
+3. **User Interface**
+   - Responsive design
+   - Dark/Light mode toggle
+   - Modern gradient text effects
+   - Clean navigation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Newsletter Integration**
+   - Email subscription form
+   - Submission confirmation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
+- GitHub: [@eikemx](https://github.com/eikemx)
+- LinkedIn: [Eike Merx](https://www.linkedin.com/in/eike-merx-50b111216/)
+- XING: [Eike Merx](https://www.xing.com/profile/Eike_Merx/web_profiles)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Acknowledgments
+- WBS Coding School
+- Project collaborator: tognut86
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*This project was created as part of the WBS Coding School Bootcamp curriculum.*
