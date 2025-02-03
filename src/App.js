@@ -65,9 +65,9 @@ const App = () => {
               <>
                 {/* <Tags tags={tags}/> */}
                 <AllArticles articles={articles} />
-                <Link to={`/authors`} className="article-link">
+                {/* <Link to={`/authors`} className="article-link">
                   See all authors
-                </Link>
+                </Link> */}
               </>
             }
           />
