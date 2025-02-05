@@ -1,4 +1,4 @@
-# Alpha Male Magazine Frontend - A Platform for Male Spirituality
+# Alpha Male Magazine - A Platform for Male Spirituality
 
 <img src="./src/img/alpha_male_magazine_screenshot.png" width="600" alt="alpha male magazine">
 
