@@ -8,13 +8,13 @@ Alpha Male Magazine is a modern web platform focused on male spirituality and pe
 ## Live Demo
 The project is deployed and can be viewed at [https://alpha-male-mag.netlify.app/](https://alpha-male-mag.netlify.app/)
 
+**Note:** Initial loading may take a few seconds as the server needs to wake up from sleep mode.
+
 ## Features
 - Dynamic article management system
-- Author profiles and biographies
 - Light/Dark mode toggle
 - Responsive design for all devices
 - Newsletter subscription functionality
-- Social media integration
 - Modern and clean user interface
 
 ## Technologies Used
@@ -23,7 +23,6 @@ The project is deployed and can be viewed at [https://alpha-male-mag.netlify.app
 - Chakra UI
 - React Router DOM
 - React Icons
-- Emotion (for styling)
 - JavaScript ES6+
 
 ### UI/UX
@@ -42,7 +41,7 @@ The project is deployed and can be viewed at [https://alpha-male-mag.netlify.app
 ### Installation
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/Alpha-Male-Magazine-Frontend.git
+   git clone https://github.com/eikemx/Alpha-Male-Magazine-node-FE
    ```
 2. Install dependencies
    ```bash
@@ -66,13 +65,6 @@ alpha-male-magazine-frontend/
 ├── src/
 │ ├── img/
 │ ├── components/
-│ │ ├── About.js
-│ │ ├── AllArticles.js
-│ │ ├── Article.js
-│ │ ├── Authors.js
-│ │ ├── Footer.js
-│ │ ├── Header.js
-│ │ └── Hero.js
 │ ├── App.js
 │ ├── serverURL.js
 │ └── index.js
@@ -86,7 +78,6 @@ alpha-male-magazine-frontend/
 ## Scripts
 - `npm start`: Runs the development server
 - `npm build`: Builds the production application
-- `npm test`: Runs the test suite
 - `npm eject`: Ejects from Create React App
 
 ## Features in Detail
@@ -95,18 +86,13 @@ alpha-male-magazine-frontend/
    - Full article view
    - Article summaries and previews
 
-2. **Author Profiles**
-   - Author biographies
-   - Author image galleries
-   - Associated articles
-
-3. **User Interface**
+2. **User Interface**
    - Responsive design
    - Dark/Light mode toggle
    - Modern gradient text effects
    - Clean navigation
 
-4. **Newsletter Integration**
+3. **Newsletter Integration**
    - Email subscription form
    - Submission confirmation
 
